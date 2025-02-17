@@ -66,7 +66,8 @@ export default function AuthScreen() {
   };
 
   return (
-    <LinearGradient colors={["#81C784", "#2E7D32"]} style={styles.container}>
+    <LinearGradient colors={["#66BB6A", "#1B5E20"]} style={styles.container}>
+
       <View style={styles.content}>
         <View style={styles.iconContainer}>
         <FontAwesome5 name="hand-holding-medical" size={80} color="white" />
