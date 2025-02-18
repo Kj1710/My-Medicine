@@ -277,6 +277,146 @@ export default function HomeScreen() {
           />
         </View>
       </LinearGradient>
+
+      <View style={styles.content}>
+        <View style={styles.quickActionsContainer}>
+          <Text style={styles.sectionTitle}>Quick Actions</Text>
+          <View style={styles.quickActionsGrid}>
+            {QUICK_ACTIONS.map((action) => (
+              <Link href={action.route} key={action.label} asChild>
+                <TouchableOpacity style={styles.actionButton}>
+                  <LinearGradient
+                    colors={action.gradient}
+                    style={styles.actionGradient}
+                  >
+                    <View style={styles.actionContent}>
+                      <View style={styles.actionIcon}>
+                        <Ionicons name={action.icon} size={28} color="white" />
+                      </View>
+                      <Text style={styles.actionLabel}>{action.label}</Text>
+                    </View>
+                  </LinearGradient>
+                </TouchableOpacity>
+              </Link>
+            ))}
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Today's Schedule</Text>
+            <Link href="/calendar" asChild>
+              <TouchableOpacity>
+                <Text style={styles.seeAllButton}>See All</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
+          {todaysMedications.length === 0 ? (
+            <View style={styles.emptyState}>
+              <Ionicons name="medical-outline" size={48} color="#ccc" />
+              <Text style={styles.emptyStateText}>
+                No medications scheduled for today
+              </Text>
+              <Link href="/medications/add" asChild>
+                <TouchableOpacity style={styles.addMedicationButton}>
+                  <Text style={styles.addMedicationButtonText}>
+                    Add Medication
+                  </Text>
+                </TouchableOpacity>
+              </Link>
+            </View>
+          ) : (
+            todaysMedications.map((medication) => {
+              const taken = isDoseTaken(medication.id);
+              return (
+                <View key={medication.id} style={styles.doseCard}>
+                  <View
+                    style={[
+                      styles.doseBadge,
+                      { backgroundColor: `${medication.color}15` },
+                    ]}
+                  >
+                    <Ionicons
+                      name="medical"
+                      size={24}
+                      color={medication.color}
+                    />
+                  </View>
+                  <View style={styles.doseInfo}>
+                    <View>
+                      <Text style={styles.medicineName}>{medication.name}</Text>
+                      <Text style={styles.dosageInfo}>{medication.dosage}</Text>
+                    </View>
+                    <View style={styles.doseTime}>
+                      <Ionicons name="time-outline" size={16} color="#666" />
+                      <Text style={styles.timeText}>{medication.times[0]}</Text>
+                    </View>
+                  </View>
+                  {taken ? (
+                    <View style={[styles.takenBadge]}>
+                      <Ionicons
+                        name="checkmark-circle"
+                        size={20}
+                        color="#4CAF50"
+                      />
+                      <Text style={styles.takenText}>Taken</Text>
+                    </View>
+                  ) : (
+                    <TouchableOpacity
+                      style={[
+                        styles.takeDoseButton,
+                        { backgroundColor: medication.color },
+                      ]}
+                      onPress={() => handleTakeDose(medication)}
+                    >
+                      <Text style={styles.takeDoseText}>Take</Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
+              );
+            })
+          )}
+        </View>
+      </View>
+
+      <Modal
+        visible={showNotifications}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setShowNotifications(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Notifications</Text>
+              <TouchableOpacity
+                onPress={() => setShowNotifications(false)}
+                style={styles.closeButton}
+              >
+                <Ionicons name="close" size={24} color="#333" />
+              </TouchableOpacity>
+            </View>
+            {todaysMedications.map((medication) => (
+              <View key={medication.id} style={styles.notificationItem}>
+                <View style={styles.notificationIcon}>
+                  <Ionicons name="medical" size={24} color={medication.color} />
+                </View>
+                <View style={styles.notificationContent}>
+                  <Text style={styles.notificationTitle}>
+                    {medication.name}
+                  </Text>
+                  <Text style={styles.notificationMessage}>
+                    {medication.dosage}
+                  </Text>
+                  <Text style={styles.notificationTime}>
+                    {medication.times[0]}
+                  </Text>
+                </View>
+              </View>
+            ))}
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
