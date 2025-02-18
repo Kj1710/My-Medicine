@@ -73,7 +73,7 @@ export default function AuthScreen() {
         <FontAwesome5 name="hand-holding-medical" size={80} color="white" />
         </View>
 
-        <Text style={styles.title}>MedRemind</Text>
+        <Text style={styles.title}>My Medicine</Text>
         <Text style={styles.subtitle}>Your Personal Medication Assistant</Text>
 
         <View style={styles.card}>
