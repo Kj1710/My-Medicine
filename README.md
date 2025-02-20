@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# 📌 Medication Reminder App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A cross-platform mobile application designed to help users manage their medication schedules with reminders, refill tracking, and secure authentication.
 
-## Get started
+## 🚀 Key Features
+- **Medication Scheduling** – Set custom reminders for different medications.
+- **Refill Tracking** – Monitor medication supply levels and get alerts for refills.
+- **Cross-Platform Compatibility** – Works seamlessly on both iOS and Android.
+- **Biometric Authentication** – Secure access via Face ID/Touch ID.
+- **Daily Progress Tracking** – View medication history and adherence trends.
+- **Calendar Integration** – Manage doses with an intuitive calendar view.
+- 
 
-1. Install dependencies
+## 🛠 Tech Stack
+- **React Native** – Cross-platform mobile development framework.
+- **Expo** – Simplifies native feature integration and development.
+- **TypeScript** – Ensures a type-safe and scalable codebase.
+- **React Navigation** – Enables smooth and intuitive navigation.
+- **Expo Notifications** – Manages push notifications for reminders.
+- **AsyncStorage** – Provides local data persistence.
+- 
 
-   ```bash
+## 📚 Project Highlights
+- **Custom medication reminder system** with adjustable times.
+- **Refill alerts** for low medication supply.
+- **Daily progress visualization** for better adherence tracking.
+- **Secure authentication** with biometrics.
+- **Seamless cross-platform support**.
+- **Modern UI design** focused on usability and accessibility.
+
+## 📂 Installation & Setup
+
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/Kj1710/My-Medicine
+
+   cd medication-reminder-app
+
+2. **Install Dependencies**
+   ```sh
    npm install
-   ```
+   # or
+   yarn install
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+3. Start the Expo Development Server 
+   ```sh
+   npx expo start
